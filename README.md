@@ -13,5 +13,5 @@ After startup the program shows its main screen. After entering the current RS-B
 To initialise and modify the decoder's Configuration Variables (CVs) the program sends Programming on the Main (PoM) messages. Since the XPressNet specification  supports PoM messages only for train decoders (but not for accessory / feedback decoders), the "trick" the GBM decoder uses is to listen to the loco address equal to the <I>RS-Bus address + 6000</I>.<BR>
 The requested CV values are send back via the RS-Bus.
 
-The program communicates with the LENZ Master station via the LAN/USB interface (23151). If different master stations are used for DCC commands and RS-Bus feedback messages, two LAN/USB interfaces may be used. The IP address(es) of the LAN interfaces can be entered via the program preferences.
+The program communicates with the LENZ Master station via the LAN/USB interface (23151). If different master stations are used for DCC commands and RS-Bus feedback messages, two LAN/USB interfaces may be used. The IP address(es) of the LAN interfaces can be entered via the program preferences.<BR>
 ![Main](/Screenshots/Preferences.png)
