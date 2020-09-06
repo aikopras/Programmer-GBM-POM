@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>GBM-POM Help - Addresses</title>
+    <meta name="AppleTitle" content="GBM-POM Help" />
+    <meta name="AppleIcon" content="GBM-POM Help/../../Icon.icns" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="noindex" />
+    <style type="text/css">
+      h1 {font: 21.0px Lucida Grande; margin:  0.0px 0.0px 18.0px 0.0px; font-weight: bold; color: rgb(102, 153, 204)}
+      h2 {font: 19.0px Lucida Grande; margin: 18.0px 0.0px  6.0px 0.0px; font-weight: bold; color: rgb(102, 153, 204)}
+      p  {font: 15.0px Lucida Grande; margin:  0.0px 0.0px  6.0px 6.0px;}
+      li {font: 15.0px Lucida Grande; margin:  0.0px 0.0px  0.0px 0.0px;}
+      ul {font: 15.0px Lucida Grande; margin:  0.0px 0.0px  0.0px 0.0px; list-style-type: disc}
+    </style>
+  </head>
+  
+  <body>
+    <h1>Understanding the different kinds of feedback decoder addresses</h1>
+    
+    <h2>The decoder's main address</h2>
+    <p>The <b>main</b> address of a feedback decoder is the RS-bus address. This address can be set by pressing the push button on the decoder's PCB. The feedback decoder will then use the first <i>accessory</i> address that it receives on its input. Note that this address should be in the range between 1 and 128.</p>
+    <p>The <b>main</b> address of a feedback decoder is stored in CV10. This CV (and thus the decoder's address) can be changed via the "CV Tab" of this program.</p>
+    <p>If the feedback decoder has not yet been initialized, the value stored in CV10 will be 255. This value represents an invalid RS-Bus address, thus a decoder with this CV value will not be able to send any feedback messages over the RS-bus.</p>
+    <p>If the feedback decoder has not yet been initialized, its <b>main</b> address can also (in addition to pressing the push button on the PCB) be set by using the "Initialize Tab" of this program.</p>
+    
+    <h2>The decoder's loco address</h2>
+    <p>Each feedback decoder listens to locomotive addresses. This address equals the RS-bus address + 6000.</p>
+    <p>If a feedback decoder has not yet been initialized (the address in CV10 is 255) it will listen to PoM messages at address 6000. Address 6000 is used within the "Initialize Tab" of this program uses to initialize the decoder (set the RS-Bus address in CV10).</p>
+    <p>In case the feedback decoder is controlling via an extension board four relays, the position of these relays can be changed by using the F1..F4 functions.</p>
+    
+    <h2>The decoder's accessory address</h2>
+    <p>Feedback decoders may also listen to accessory (thus switch) addresses. In this way the relays that can be connected via an extension board can be controlled via "normal" accessory decoder addresses (instead of loco addresses and F1...F4).</p>
+    <p>The accessory decoder address will be stored in CV1 and CV9 (just like normal accessory decoders).</p>
+    <p>Note however that for "my" accessory decoder" CV1 should be in the range of 1..64 (Not 0..63!) and CV9 0..3.</p>
+    <p>In case an accessory decoder address has not yet been initialized, CV9 holds as value 0x80. Initializing the accessory decoder address can be done via the "Relays Tab" of this program.</p>
+    <p>The decoder only listens to an accessory decoder address if the Decoder Mode is "Relays". This mode can be set via the "Control Tab" of this program.</p>
+    
+    <h2>Acceptable decoder addresses</h2>
+    <ul>
+      <li>Main address: 1..128 (255 if not yet initialized)</li>
+      <li>Loco address: 6001..6128 (6000 if not yet initialized)</li>
+      <li>Accessory address: 0.255 (&gt;2048 if not yet initialized)</li>
+    </ul>
+  </body>
+</html>
