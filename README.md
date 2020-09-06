@@ -1,7 +1,17 @@
-# Programmer-GBM-POM
- Xcode project - MAC software for the GBM
+# Programmer-GBM-POM (MAC OS-X)
+Program to initialise the Gleis Besetz Meldung (GBM)
 
-This program allows reading and modifying the CV variables within the Occupancy Detection (Feedback) Decoder (Gleis Besetz Meldung). For that purpose it uses Programming on the Main (PoM) messages. Since the XPressNet specification only supports PoM messages for train decoders (as opposed to accessory / feedback decoders), Feedback decoders listen to a train address equal to the RS-Bus address + 6000. GBM feedback decoders do NOT support service mode programming (thus programming on the programming track), since the GBM hardware is powered from the tracks, and in service mode power has to be removed from the track.
-To set a CV to a certain value, a standard CV-Write message is transmitted.
-To read a CV value, a standard CV-Verify message is transmitted. Note however that the CV value contained in that message will always be 0. Upon reception of this message, the decoder reacts in a non-standard way, by sending the value of the CV back via RS-Bus feedback messages (two messages for each byte).
-Four types of feedback decoders exist: normal feedback decoders, feedback decoders also acting as reversers, feedback decoders with four relays to power-off tracks and finally feedback decoders with a LCD display that shows the speed of a train passing through a certain track.
+This program allows the initialisation (by reading and modifying CV variables) of the [occupancy detection (feedback) / Gleis Besetz Meldung decoder](https://github.com/aikopras/OPENDECODER22GBM). This decoder sends feedback messages via the RS-Bus and can, for initialisation purposes but also to switch relays, listen to DCC commands. Given that it uses RS-Bus messages for feedback, the decoders will primarily be interesting in environments with LENZ Master stations (like the LZV 100) connected via the LAN/USB interface (23151).<BR>
+The program is written for MAC OSX; the executable can be [dowloaded directly](/Program/Programmer%20GBM-POM.app.zip) or can be compiled from scratch using Xcode.<BR>
+ 
+## Main screen ## 
+After startup the program shows its main screen. After entering the current RS-Bus address of the decoder all CV values are being downloaded from the decoder. Screenshots for the other tabs can be seen [here](/Screenshots/).
+![Main](/Screenshots/Main.png)
+
+
+## How does the program work? ##
+To initialise and modify the decoder's Configuration Variables (CVs) the program sends Programming on the Main (PoM) messages. Since the XPressNet specification  supports PoM messages only for train decoders (but not for accessory / feedback decoders), the "trick" the GBM decoder uses is to listen to the loco address equal to the <I>RS-Bus address + 6000</I>.<BR>
+The requested CV values are send back via the RS-Bus.
+
+The program communicates with the LENZ Master station via the LAN/USB interface (23151). If different master stations are used for DCC commands and RS-Bus feedback messages, two LAN/USB interfaces may be used. The IP address(es) of the LAN interfaces can be entered via the program preferences.
+![Main](/Screenshots/Preferences.png)
