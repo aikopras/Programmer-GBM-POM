@@ -24,6 +24,7 @@
 		2479A8361531CEBB00B93E37 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2479A8341531CEBB00B93E37 /* Credits.rtf */; };
 		2479A8391531CEBB00B93E37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2479A8381531CEBB00B93E37 /* AppDelegate.m */; };
 		2479A83C1531CEBB00B93E37 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2479A83A1531CEBB00B93E37 /* MainMenu.xib */; };
+		24B91A4725063DA4001ED7F9 /* reverser.key.zip in Resources */ = {isa = PBXBuildFile; fileRef = 24B91A4625063DA4001ED7F9 /* reverser.key.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,6 @@
 		2458BDC716FA61E400E2F8A5 /* GBM-POMHelp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "GBM-POMHelp"; sourceTree = "<group>"; };
 		246BA96016EBE30A005AA872 /* treshold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treshold.png; sourceTree = "<group>"; };
 		246BA96216EBE31A005AA872 /* treshold.key */ = {isa = PBXFileReference; lastKnownFileType = file; path = treshold.key; sourceTree = "<group>"; };
-		246BA96416EBE326005AA872 /* reverser.key */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = reverser.key; sourceTree = "<group>"; };
 		246BA96616EBE337005AA872 /* reverser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reverser.png; sourceTree = "<group>"; };
 		246BA96A16EBE389005AA872 /* CVs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CVs.html; sourceTree = "<group>"; };
 		246BA96C16EBE389005AA872 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -61,6 +61,7 @@
 		2479A8371531CEBB00B93E37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2479A8381531CEBB00B93E37 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2479A83B1531CEBB00B93E37 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		24B91A4625063DA4001ED7F9 /* reverser.key.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = reverser.key.zip; path = Graphics/reverser.key.zip; sourceTree = SOURCE_ROOT; };
 		24E2499A16ED3300007ED481 /* PCB-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PCB-1.png"; sourceTree = "<group>"; };
 		24E2499B16ED3300007ED481 /* PCB-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PCB-2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,13 +81,13 @@
 		24086F3816EB98A500A00AD0 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				24B91A4625063DA4001ED7F9 /* reverser.key.zip */,
 				24086F3916EB992100A00AD0 /* PoM-GBM-icon.icns */,
 				24086F3A16EB992100A00AD0 /* PoM-GBM-icon.png */,
 				24086F3B16EB992100A00AD0 /* PoM-GBM-icon.key */,
 				246BA96016EBE30A005AA872 /* treshold.png */,
 				246BA96216EBE31A005AA872 /* treshold.key */,
 				246BA96616EBE337005AA872 /* reverser.png */,
-				246BA96416EBE326005AA872 /* reverser.key */,
 				24E2499A16ED3300007ED481 /* PCB-1.png */,
 				24E2499B16ED3300007ED481 /* PCB-2.png */,
 			);
@@ -245,6 +246,7 @@
 				246BA97516EBE588005AA872 /* intro.html in Resources */,
 				246BA97716EBE67C005AA872 /* addresses.html in Resources */,
 				246BA97B16EBEFAF005AA872 /* IP.html in Resources */,
+				24B91A4725063DA4001ED7F9 /* reverser.key.zip in Resources */,
 				2458BDC816FA61E400E2F8A5 /* GBM-POMHelp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
