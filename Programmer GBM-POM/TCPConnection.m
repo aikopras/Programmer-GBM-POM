@@ -451,6 +451,8 @@ struct lenzStatus_t lenzStatusRS;
   [_oStreamPoM write:(const uint8_t *)buffer maxLength:length];
   // to determine if we receive a reply, start the time out timer (except if CV=10-1)
   if (cvNumber != (10-1)) [self startPomTimeOut];
+  // Clear the general status line
+  [_topObject showGeneralStatus: @""];
   // Write the value of the POM packet to the send status line
   NSString *message = @"POM write message send: CV=";
   message = [message stringByAppendingString:[NSString stringWithFormat:@"%d",cvNumber + 1]];

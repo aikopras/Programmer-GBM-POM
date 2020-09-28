@@ -699,8 +699,6 @@
   if (newValue > 1024) {newValue = 1024;}
   newValue = newValue -1;     // entering is 1..1024 <-> storing is 0..1023
   newValue = newValue >> 2;   // decoder address = relays address DIV 4
-    
-
   [_dccDecoderObject setCv:myAddrL withValue:((newValue & 0b00111111)+1)];
   [_dccDecoderObject setCv:myAddrH withValue:((newValue >> 6) & 0b00000111)];
   [self updateTabs];
@@ -724,9 +722,9 @@
 }
 
 - (void) updateRelaysTab {
-  int cv1 = [_dccDecoderObject getCv:myAddrL] -1;
+  int cv1 = [_dccDecoderObject getCv:myAddrL];
   int cv9 = [_dccDecoderObject getCv:myAddrH];
-  int MyAddr = (((cv9 & 0x7F) << 6) | (cv1)); // 3 bits from cv9 (the high bits) plus 6 bits from cv1
+  int MyAddr = (((cv9 & 0x7F) << 6) | (cv1)) - 1; // 3 bits from cv9 (the high bits) plus 6 bits from cv1
   MyAddr = MyAddr * 4 + 1;  // Compensate since we store blocks of four and 0..1023 instead of 1.1024
   [_relaysAddress setIntValue:MyAddr];
 }
