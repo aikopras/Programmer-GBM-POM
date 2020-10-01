@@ -2,7 +2,7 @@
 Program to initialise the Gleis Besetz Meldung (GBM)
 
 This program allows the initialisation (by reading and modifying CV variables) of the [occupancy detection (feedback) / Gleis Besetz Meldung decoder](https://github.com/aikopras/OPENDECODER22GBM). This decoder sends feedback messages via the RS-Bus and can, for initialisation purposes but also to switch relays, listen to DCC commands. Given that it uses RS-Bus messages for feedback, the decoders will primarily be interesting in environments with LENZ Master stations (like the LZV 100) connected via the LAN/USB interface (23151).<BR>
-The program is written for MAC OSX; the executable can be [dowloaded directly](/Program/Programmer%20GBM-POM.app.zip) or can be compiled from scratch using Xcode.<BR>
+The program is written for MAC OSX; the executable can be [dowloaded directly](/Compiled%20Application/Programmer_GBM_PoM.dmg) or can be compiled from scratch using Xcode.<BR>
  
 ## Main screen ## 
 After startup the program shows its main screen. After entering the current RS-Bus address of the decoder all CV values are being downloaded from the decoder. Screenshots for the other tabs can be seen [here](/Screenshots/).
