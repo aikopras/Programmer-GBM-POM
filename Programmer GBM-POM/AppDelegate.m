@@ -172,15 +172,19 @@
   _tcpConnectionsObject = [[TCPConnectionsClass alloc] init];
   // Now open the TCP connection
   [_tcpConnectionsObject openTcp];
-// TEST ONLY
-  [_dccDecoderObject setDecoderAddress:100];
-  [self.address setIntValue:_dccDecoderObject.decoderAddress];
-  //
   // Step 4: UI tabs
   [self hideOptionalTabs];
   [self updateTabs];
   // Step 5: initialise progress indicator
   [_progressIndicator setDisplayedWhenStopped: NO];
+  
+  [_dccDecoderObject setDecoderAddress:0];
+  [_tcpConnectionsObject queuePomVerifyPacketForCV:version];
+  [_tcpConnectionsObject sendNextPomVerifyPacketFromQueue];
+  // But in addition we read all other CVs to allow the appropriate TABs (switch, servo, ...) to be displayed.
+  [self readAllCvs];
+  [self updateTabs];
+
 }
 
 - (void) updateTabs {
@@ -202,7 +206,7 @@
 // ********************************** FEEDBACK MESSAGE RECEIVED BY THE TCP OBJECT *****************************
 // ************************************************************************************************************
 - (void)feedbackPacketReceivedForAddress:(int)decoderAddress withCV:(int)cvNumber withValue:(u_int8_t)cvValue {
-  NSLog(@"Feedback received. Address:%d CV:%d Value:%d", decoderAddress, cvNumber, cvValue);
+  // NSLog(@"Feedback received. Address:%d CV:%d Value:%d", decoderAddress, cvNumber, cvValue);
   [_dccDecoderObject setCv:cvNumber withValue:cvValue];
   [self updateTabs];
 }
@@ -697,10 +701,10 @@
   int newValue = [sender intValue];
   if (newValue < 1) {newValue = 1;}
   if (newValue > 1024) {newValue = 1024;}
-  newValue = newValue -1;     // entering is 1..1024 <-> storing is 0..1023
+  newValue = newValue - 1;    // entering is 1..1024 <-> storing is 0..1023
   newValue = newValue >> 2;   // decoder address = relays address DIV 4
-  [_dccDecoderObject setCv:myAddrL withValue:((newValue & 0b00111111)+1)];
-  [_dccDecoderObject setCv:myAddrH withValue:((newValue >> 6) & 0b00000111)];
+  [_dccDecoderObject setCv:myAddrL withValue:( (newValue + 1)       & 0b00111111)];
+  [_dccDecoderObject setCv:myAddrH withValue:(((newValue + 1) >> 6) & 0b00000111)];
   [self updateTabs];
   [self colorGetButtonRelaysTab:1];
 }
@@ -724,9 +728,16 @@
 - (void) updateRelaysTab {
   int cv1 = [_dccDecoderObject getCv:myAddrL];
   int cv9 = [_dccDecoderObject getCv:myAddrH];
-  int MyAddr = (((cv9 & 0x7F) << 6) | (cv1)) - 1; // 3 bits from cv9 (the high bits) plus 6 bits from cv1
-  MyAddr = MyAddr * 4 + 1;  // Compensate since we store blocks of four and 0..1023 instead of 1.1024
-  [_relaysAddress setIntValue:MyAddr];
+  // Only fill "_relaysAddress" if CV9 indicates a valid relays address
+  if (cv9 < 8) {
+    int MyAddr = (((cv9 & 0x7F) << 6) | (cv1)) - 1; // 3 bits from cv9 (the high bits) plus 6 bits from cv1
+    MyAddr = MyAddr * 4 + 1;  // Compensate since we store blocks of four and 0..1023 instead of 1.1024
+    [_relaysAddress setIntValue:MyAddr];
+  }
+  else {
+    NSString *message = @"Undefined";
+    [_relaysAddress setStringValue:message];
+  }
 }
 
 - (void)colorGetButtonRelaysTab:(int)isRed {
@@ -925,7 +936,7 @@
 // ************************************************************************************************************
 - (void)setButtonTitleFor:(NSButton*)button toString:(NSString*)title withColor:(NSColor*)color {
   NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-  [style setAlignment:NSCenterTextAlignment];
+  [style setAlignment:NSTextAlignmentCenter];
   NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                    color, NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, nil];
   NSAttributedString *attrString = [[NSAttributedString alloc]

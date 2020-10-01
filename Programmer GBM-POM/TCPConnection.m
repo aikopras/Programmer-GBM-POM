@@ -310,6 +310,8 @@ struct lenzStatus_t lenzStatusRS;
       // NSLog(@"sendNextPomVerifyPacketFromQueue for CV:%d", nextCv);
     }
     else { // No more verify messages to send
+      // Clear the general status line
+      [_topObject showGeneralStatus: @""];
       // Write the number of POM packets verified to the send status line
       NSString *message = @"Number of transmitted POM verify messages: ";
       message = [message stringByAppendingString:[NSString stringWithFormat:@"%d",numberOfVerifyCvs]];
@@ -469,9 +471,9 @@ struct lenzStatus_t lenzStatusRS;
   int adr = [_topObject.dccDecoderObject decoderAddress];
   // Make some checks if values are OK
   // RS-Bus addresses range from 1..128
-  // Although for writing we accepted 0 (for initialization purposes), for reading 0 is not allowed
+  // We accepted 0 for initialization purposes
   // NSLog(@"Addr:%i",adr);
-  if (adr < 1)         {[_topObject showGeneralStatus: @"RS-Bus address should be between 1-128"]; return; }
+  if (adr < 0)         {[_topObject showGeneralStatus: @"RS-Bus address should be between 1-128"]; return; }
   if (adr > 128)       {[_topObject showGeneralStatus: @"RS-Bus address should be between 1-128"]; return; }
   if (cvNumber == 0)   {[_topObject showGeneralStatus: @"CV should be between 1-1024"]; return; }
   if (cvNumber > 1024) {[_topObject showGeneralStatus: @"CV too high"]; return; }
@@ -881,7 +883,20 @@ struct lenzStatus_t lenzStatusRS;
       break;}
     case CheckingCv8:             { // If we also have a timeout on CV8, we must conclude no decoder is listening to this address
       ErrorStatePomVerify = NoError;
-      [_topObject showGeneralStatus: @"No decoder responds to this address"];
+      // Before september 2020 we had the next line:
+      // [_topObject showGeneralStatus: @"No decoder responds to this address"];
+      // September 2020 we changed this into the following 4 lines:
+      int dec_adr = [_topObject.dccDecoderObject decoderAddress];
+      if (dec_adr < 0) {
+        [_topObject showGeneralStatus: @"No non-initialised decoders found"];
+      }
+      else {
+        NSString * message = @"No decoder responds to address: ";
+        message = [message stringByAppendingString:[NSString stringWithFormat:@"%d", dec_adr]];
+        [_topObject showGeneralStatus:message];
+      }
+      // Stop the progress indicator
+      [_topObject progressIndicator: 0];
       [self clear_cvs_verify];
       break;}
     case RetryCv:                 { // Seems the CV is not implemented. Forget about this CV and continue with next CV
