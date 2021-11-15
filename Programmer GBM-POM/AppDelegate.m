@@ -184,7 +184,6 @@
   // But in addition we read all other CVs to allow the appropriate TABs (switch, servo, ...) to be displayed.
   [self readAllCvs];
   [self updateTabs];
-
 }
 
 - (void) updateTabs {
@@ -859,19 +858,34 @@
   [self readLastInputFromTextFields];
   // Set the address of the uninitilised decoder to 0, which will result in a PoM message with address 6000
   [_dccDecoderObject setDecoderAddress:0];
+  // Modified July 2021, to ensure a restart is performed
+  [_dccDecoderObject setCv:Restart withValue:1];
   [_address setIntValue:_dccDecoderObject.decoderAddress];
   // Since a wrong value in myRSAddr can make the decoder inaccessable, check myRSAddr again!
   uint8_t newAddress = [_dccDecoderObject getCv:myRSAddr];
   if ((newAddress >= 1) && (newAddress <= 128)) {
     // NSLog(@"New RS-Bus address: %i", newAddress);
     [_tcpConnectionsObject queuePomWritePacketForCV:myRSAddr];
+    //
+    // Modified July 2021, to ensure a restart is performed
+    [_tcpConnectionsObject queuePomWritePacketForCV:Restart];
     [_tcpConnectionsObject sendNextPomWritePacketFromQueue];
-    // Change decoder's address to this new adres
-    [_dccDecoderObject setDecoderAddress:newAddress];
-    [_address setIntValue:_dccDecoderObject.decoderAddress];
+    // Update the decoder address, but wait one second to allow all PoM messages to be send
+    // using the "old" address for non-initialised decoders
+    [self performSelector:@selector(updateDecoderAddress) withObject:nil afterDelay:1];
+    // [_dccDecoderObject setDecoderAddress:newAddress];
+    // [_address setIntValue:_dccDecoderObject.decoderAddress];
+    //
     [self colorGetButtonIniTab:0];
   }
   [self updateTabs];
+}
+
+// Added July 2021, to ensure a restart is performed
+- (void)updateDecoderAddress {
+  uint8_t newAddress = [_dccDecoderObject getCv:myRSAddr];
+  [_dccDecoderObject setDecoderAddress:newAddress];
+  [_address setIntValue:_dccDecoderObject.decoderAddress];
 }
 
 - (void)updateIniTab {
