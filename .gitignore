@@ -1,9 +1,4 @@
 
 .DS_Store
 Helpfiles/.DS_Store
-Programmer GBM-POM.xcodeproj/project.xcworkspace/xcuserdata/pras.xcuserdatad/IDEFindNavigatorScopes.plist
-Programmer GBM-POM.xcodeproj/project.xcworkspace/xcuserdata/pras.xcuserdatad/UserInterfaceState.xcuserstate
-Programmer GBM-POM.xcodeproj/project.xcworkspace/xcuserdata/pras.xcuserdatad/WorkspaceSettings.xcsettings
-Programmer GBM-POM.xcodeproj/xcuserdata/pras.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
-Programmer GBM-POM.xcodeproj/xcuserdata/pras.xcuserdatad/xcschemes/Programmer GBM-POM.xcscheme
-Programmer GBM-POM.xcodeproj/xcuserdata/pras.xcuserdatad/xcschemes/xcschememanagement.plist
+xcuserdata/
