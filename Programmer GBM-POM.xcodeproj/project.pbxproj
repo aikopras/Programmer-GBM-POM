@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24813D16309244C1004D4847 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24813D15309244C1004D4847 /* Network.framework */; };
+		24813D1B30924A54004D4847 /* TCPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 24813D1A30924A54004D4847 /* TCPSocket.m */; };
 		24086F3C16EB992100A00AD0 /* PoM-GBM-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 24086F3916EB992100A00AD0 /* PoM-GBM-icon.icns */; };
 		242243861531CF4200089699 /* TCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2422437C1531CF4200089699 /* TCPConnection.m */; };
 		242243871531CF4200089699 /* DCCDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2422437E1531CF4200089699 /* DCCDecoder.m */; };
@@ -15,9 +17,6 @@
 		2458BDC816FA61E400E2F8A5 /* GBM-POMHelp in Resources */ = {isa = PBXBuildFile; fileRef = 2458BDC716FA61E400E2F8A5 /* GBM-POMHelp */; };
 		246BA96116EBE30A005AA872 /* treshold.png in Resources */ = {isa = PBXBuildFile; fileRef = 246BA96016EBE30A005AA872 /* treshold.png */; };
 		246BA96716EBE337005AA872 /* reverser.png in Resources */ = {isa = PBXBuildFile; fileRef = 246BA96616EBE337005AA872 /* reverser.png */; };
-		246BA97516EBE588005AA872 /* intro.html in Resources */ = {isa = PBXBuildFile; fileRef = 246BA97416EBE588005AA872 /* intro.html */; };
-		246BA97716EBE67C005AA872 /* addresses.html in Resources */ = {isa = PBXBuildFile; fileRef = 246BA97616EBE67C005AA872 /* addresses.html */; };
-		246BA97B16EBEFAF005AA872 /* IP.html in Resources */ = {isa = PBXBuildFile; fileRef = 246BA97A16EBEFAF005AA872 /* IP.html */; };
 		2479A8261531CEBB00B93E37 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2479A8251531CEBB00B93E37 /* Cocoa.framework */; };
 		2479A8301531CEBB00B93E37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2479A82E1531CEBB00B93E37 /* InfoPlist.strings */; };
 		2479A8321531CEBB00B93E37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2479A8311531CEBB00B93E37 /* main.m */; };
@@ -28,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24813D15309244C1004D4847 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
+		24813D1930924A36004D4847 /* TCPSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCPSocket.h; sourceTree = "<group>"; };
+		24813D1A30924A54004D4847 /* TCPSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCPSocket.m; sourceTree = "<group>"; };
 		24086F3916EB992100A00AD0 /* PoM-GBM-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "PoM-GBM-icon.icns"; sourceTree = "<group>"; };
 		24086F3A16EB992100A00AD0 /* PoM-GBM-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoM-GBM-icon.png"; sourceTree = "<group>"; };
 		24086F3B16EB992100A00AD0 /* PoM-GBM-icon.key */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoM-GBM-icon.key"; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2479A8261531CEBB00B93E37 /* Cocoa.framework in Frameworks */,
+				24813D16309244C1004D4847 /* Network.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,8 +94,7 @@
 				24E2499A16ED3300007ED481 /* PCB-1.png */,
 				24E2499B16ED3300007ED481 /* PCB-2.png */,
 			);
-			name = Graphics;
-			path = graphics;
+			path = Graphics;
 			sourceTree = "<group>";
 		};
 		246BA96816EBE389005AA872 /* Helpfiles */ = {
@@ -138,6 +140,7 @@
 		2479A8241531CEBB00B93E37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24813D15309244C1004D4847 /* Network.framework */,
 				2479A8251531CEBB00B93E37 /* Cocoa.framework */,
 				2479A8271531CEBB00B93E37 /* Other Frameworks */,
 			);
@@ -162,6 +165,8 @@
 				2479A83A1531CEBB00B93E37 /* MainMenu.xib */,
 				2422437D1531CF4200089699 /* TCPConnection.h */,
 				2422437C1531CF4200089699 /* TCPConnection.m */,
+				24813D1A30924A54004D4847 /* TCPSocket.m */,
+				24813D1930924A36004D4847 /* TCPSocket.h */,
 				2422437F1531CF4200089699 /* DCCDecoder.h */,
 				2422437E1531CF4200089699 /* DCCDecoder.m */,
 				242243831531CF4200089699 /* PreferencesController.h */,
@@ -212,14 +217,16 @@
 		2479A8181531CEBB00B93E37 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1010;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2710;
 			};
 			buildConfigurationList = 2479A81B1531CEBB00B93E37 /* Build configuration list for PBXProject "Programmer GBM-POM" */;
 			compatibilityVersion = "Xcode 10.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 2479A8161531CEBB00B93E37;
 			productRefGroup = 2479A8221531CEBB00B93E37 /* Products */;
@@ -243,9 +250,6 @@
 				24086F3C16EB992100A00AD0 /* PoM-GBM-icon.icns in Resources */,
 				246BA96116EBE30A005AA872 /* treshold.png in Resources */,
 				246BA96716EBE337005AA872 /* reverser.png in Resources */,
-				246BA97516EBE588005AA872 /* intro.html in Resources */,
-				246BA97716EBE67C005AA872 /* addresses.html in Resources */,
-				246BA97B16EBEFAF005AA872 /* IP.html in Resources */,
 				24B91A4725063DA4001ED7F9 /* reverser.key.zip in Resources */,
 				2458BDC816FA61E400E2F8A5 /* GBM-POMHelp in Resources */,
 			);
@@ -261,6 +265,7 @@
 				2479A8321531CEBB00B93E37 /* main.m in Sources */,
 				2479A8391531CEBB00B93E37 /* AppDelegate.m in Sources */,
 				242243861531CF4200089699 /* TCPConnection.m in Sources */,
+				24813D1B30924A54004D4847 /* TCPSocket.m in Sources */,
 				242243871531CF4200089699 /* DCCDecoder.m in Sources */,
 				2422438A1531CF4200089699 /* PreferencesController.m in Sources */,
 			);
@@ -300,6 +305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -312,14 +318,17 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -337,9 +346,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Debug;
 		};
@@ -347,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -359,14 +370,17 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -377,19 +391,24 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Release;
 		};
 		2479A8401531CEBB00B93E37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Programmer GBM-POM/Programmer GBM-POM-Prefix.pch";
 				INFOPLIST_FILE = "Programmer GBM-POM/Programmer GBM-POM-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "AikoPras.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -399,11 +418,15 @@
 		2479A8411531CEBB00B93E37 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Programmer GBM-POM/Programmer GBM-POM-Prefix.pch";
 				INFOPLIST_FILE = "Programmer GBM-POM/Programmer GBM-POM-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "AikoPras.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

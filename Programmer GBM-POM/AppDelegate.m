@@ -127,7 +127,6 @@
 #define CmdStation    19
 #define RSRetry       20
 #define Search        23
-#define PoMStart      24
 #define Restart       25
 #define DccQuality    26
 #define DecType       27
@@ -227,10 +226,12 @@
   if (newValue < 1) {newValue = 1;}
   if (newValue > 128) {newValue = 128;}
   [_dccDecoderObject setDecoderAddress:newValue];
+  [_tcpConnectionsObject openTcpIfClosed];   // 2026: reconnect if the Lenz interface(s) were not available before
 }
 
 - (IBAction)selectAddressPushed:(id)sender {
   [self readLastInputFromTextFields];
+  [_tcpConnectionsObject openTcpIfClosed];   // 2026: reconnect if the Lenz interface(s) were not available before
   [self readAllCvs];
 }
 
@@ -656,22 +657,25 @@
   [self colorGetButtonReverserTab:0];
 }
 
+
 - (void) updateReverserTab {
-  [_comboReverserA  setIntValue:[_dccDecoderObject getCv:FB_A]];
-  [_comboReverserB  setIntValue:[_dccDecoderObject getCv:FB_B]];
-  [_comboReverserC  setIntValue:[_dccDecoderObject getCv:FB_C]];
-  [_comboReverserD  setIntValue:[_dccDecoderObject getCv:FB_D]];
-  [_comboReverserS1 setIntValue:[_dccDecoderObject getCv:FB_S1]];
-  [_comboReverserS2 setIntValue:[_dccDecoderObject getCv:FB_S2]];
-  [_comboReverserS3 setIntValue:[_dccDecoderObject getCv:FB_S3]];
-  [_comboReverserS4 setIntValue:[_dccDecoderObject getCv:FB_S4]];
+  // 2026: The CVs hold the feedback bit (0..7); the comboboxes show the RS-Bus input (1..8)
+  [_comboReverserA  setIntValue:[_dccDecoderObject getCv:FB_A] + 1];
+  [_comboReverserB  setIntValue:[_dccDecoderObject getCv:FB_B] + 1];
+  [_comboReverserC  setIntValue:[_dccDecoderObject getCv:FB_C] + 1];
+  [_comboReverserD  setIntValue:[_dccDecoderObject getCv:FB_D] + 1];
+  [_comboReverserS1 setIntValue:[_dccDecoderObject getCv:FB_S1] + 1];
+  [_comboReverserS2 setIntValue:[_dccDecoderObject getCv:FB_S2] + 1];
+  [_comboReverserS3 setIntValue:[_dccDecoderObject getCv:FB_S3] + 1];
+  [_comboReverserS4 setIntValue:[_dccDecoderObject getCv:FB_S4] + 1];
   // J&K polarization on relays
   if ([_dccDecoderObject getCv:Polarization] == 1) [_comboReverserPolarization selectItemWithObjectValue: @"Inverted"];
   else [_comboReverserPolarization selectItemWithObjectValue: @"Normal"];
 }
 
 - (void)storeReverserCv:(uint8_t)cvNumber with:(NSString*)newString {
-  uint8_t newValue;
+  // 2026: The comboboxes show the RS-Bus input (1..8); the CVs hold the feedback bit (0..7)
+  uint8_t newValue = 0;
   if ([newString isEqualToString:@"1"]) {newValue = 1;}
   if ([newString isEqualToString:@"2"]) {newValue = 2;}
   if ([newString isEqualToString:@"3"]) {newValue = 3;}
@@ -681,11 +685,12 @@
   if ([newString isEqualToString:@"7"]) {newValue = 7;}
   if ([newString isEqualToString:@"8"]) {newValue = 8;}
   if ((newValue >= 1) && (newValue <=8)) {
-    [_dccDecoderObject setCv:cvNumber withValue:newValue];
+    [_dccDecoderObject setCv:cvNumber withValue:(newValue - 1)];   // CVs: 0..7
     [self updateTabs];
     [self colorGetButtonReverserTab:1];
   }
 }
+
 
 - (void)colorGetButtonReverserTab:(int)isRed {
   if (isRed) [self setButtonTitleFor:_buttonReverserTabSet toString:@"SET" withColor:[NSColor redColor]];
@@ -819,17 +824,17 @@
 }
 
 - (void)storeSpeedCv:(uint8_t)cvNumber with:(NSString*)newString {
-  uint8_t newValue;
+  uint8_t newValue = 255;   // 2026: 255 = no valid choice
   if ([newString isEqualToString:@"0"]) {newValue = 0;}
-  if ([newString isEqualToString:@"1"]) {newValue = 1;}
+  // if ([newString isEqualToString:@"1"]) {newValue = 1;} // 2026: removed
   if ([newString isEqualToString:@"2"]) {newValue = 2;}
   if ([newString isEqualToString:@"3"]) {newValue = 3;}
   if ([newString isEqualToString:@"4"]) {newValue = 4;}
   if ([newString isEqualToString:@"5"]) {newValue = 5;}
   if ([newString isEqualToString:@"6"]) {newValue = 6;}
   if ([newString isEqualToString:@"7"]) {newValue = 7;}
-  if ([newString isEqualToString:@"8"]) {newValue = 8;}
-  if ((newValue >= 0) && (newValue <=8)) {
+  // if ([newString isEqualToString:@"8"]) {newValue = 8;} // 2026: removed
+  if (newValue <= 7) {      // 2026: was (newValue >= 0) && (newValue <=8)
     [_dccDecoderObject setCv:cvNumber withValue:newValue];
     [self updateTabs];
     [self colorGetButtonSpeedTab:1];
@@ -936,7 +941,10 @@
   [_tcpConnectionsObject queuePomWritePacketForCV:VID];
   [_tcpConnectionsObject sendNextPomWritePacketFromQueue];
   // Read all CVs again, after a delay of 0.3 seconds
-  [self performSelector:@selector(readAllCvs) withObject:nil afterDelay:0.3];
+  // [self performSelector:@selector(readAllCvs) withObject:nil afterDelay:0.3];  // 2026 removed
+  // 2026: The decoder resets all CVs, including the RS-Bus address (CV10 becomes 0), and restarts.
+  // Reading all CVs again at the old address is therefore not possible
+  [self showGeneralStatus:@"CVs reset. RS-Bus address is now 0 (see Initialise tab)"];
 }
 
 - (void)updateCvTab {
@@ -1047,8 +1055,8 @@ NSTabViewItem *holderForTabSpeed;
 
 - (void)initialisePreferences{
   // Create a new preferences file
-  [[NSUserDefaults standardUserDefaults] setObject:@"192.168.1.211"        forKey:@"defaultIpAddressForSending"];
-  [[NSUserDefaults standardUserDefaults] setObject:@"192.168.1.213"        forKey:@"defaultIpAddressForReceiving"];
+  [[NSUserDefaults standardUserDefaults] setObject:@"192.168.24.211"       forKey:@"defaultIpAddressForSending"];
+  [[NSUserDefaults standardUserDefaults] setObject:@"192.168.24.213"       forKey:@"defaultIpAddressForReceiving"];
   [[NSUserDefaults standardUserDefaults] setBool:1                         forKey:@"defaultIpAddressForReceivingIsActive"];
 }
 
@@ -1058,7 +1066,7 @@ NSTabViewItem *holderForTabSpeed;
 - (void)dealloc {[super dealloc];}
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {return YES;}
-
+- (BOOL)applicationSupportsSecureRestorableState:(NSApplication *)app {return YES;}
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
   [_tcpConnectionsObject closeTcp];
