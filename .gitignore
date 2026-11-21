@@ -1,4 +1,9 @@
-
+# macOS
 .DS_Store
 Helpfiles/.DS_Store
 xcuserdata/
+
+# Qt / CMake (src/Qt)
+build/
+deploy/
+CMakeLists.txt.user
