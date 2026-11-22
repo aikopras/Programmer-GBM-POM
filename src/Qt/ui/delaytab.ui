@@ -1,0 +1,672 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui version="4.0">
+ <class>DelayTab</class>
+ <widget class="QWidget" name="DelayTab">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>825</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <widget class="QGroupBox" name="groupBox1">
+   <property name="geometry">
+    <rect>
+     <x>14</x>
+     <y>30</y>
+     <width>650</width>
+     <height>456</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string>QGroupBox {margin-top: 0px;}</string>
+   </property>
+   <widget class="QSlider" name="cv11Slider">
+    <property name="geometry">
+     <rect>
+      <x>48</x>
+      <y>74</y>
+      <width>24</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="cv13Slider">
+    <property name="geometry">
+     <rect>
+      <x>198</x>
+      <y>74</y>
+      <width>24</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="cv14Slider">
+    <property name="geometry">
+     <rect>
+      <x>273</x>
+      <y>74</y>
+      <width>24</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="cv15Slider">
+    <property name="geometry">
+     <rect>
+      <x>348</x>
+      <y>74</y>
+      <width>24</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="cv16Slider">
+    <property name="geometry">
+     <rect>
+      <x>423</x>
+      <y>74</y>
+      <width>24</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="cv17Slider">
+    <property name="geometry">
+     <rect>
+      <x>498</x>
+      <y>74</y>
+      <width>24</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="cv18Slider">
+    <property name="geometry">
+     <rect>
+      <x>573</x>
+      <y>74</y>
+      <width>24</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="cv12Slider">
+    <property name="geometry">
+     <rect>
+      <x>123</x>
+      <y>74</y>
+      <width>24</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="cv11Text">
+    <property name="geometry">
+     <rect>
+      <x>35</x>
+      <y>36</y>
+      <width>50</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>0</double>
+    </property>
+    <property name="maximum">
+     <double>2.55</double>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="singleStep">
+     <double>0.01</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="cv12Text">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>36</y>
+      <width>50</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>0</double>
+    </property>
+    <property name="maximum">
+     <double>2.55</double>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="singleStep">
+     <double>0.01</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="cv13Text">
+    <property name="geometry">
+     <rect>
+      <x>185</x>
+      <y>36</y>
+      <width>50</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>0</double>
+    </property>
+    <property name="maximum">
+     <double>2.55</double>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="singleStep">
+     <double>0.01</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="cv14Text">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>36</y>
+      <width>50</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>0</double>
+    </property>
+    <property name="maximum">
+     <double>2.55</double>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="singleStep">
+     <double>0.01</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="cv15Text">
+    <property name="geometry">
+     <rect>
+      <x>335</x>
+      <y>36</y>
+      <width>50</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>0</double>
+    </property>
+    <property name="maximum">
+     <double>2.55</double>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="singleStep">
+     <double>0.01</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="cv16Text">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>36</y>
+      <width>50</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>0</double>
+    </property>
+    <property name="maximum">
+     <double>2.55</double>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="singleStep">
+     <double>0.01</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="cv17Text">
+    <property name="geometry">
+     <rect>
+      <x>485</x>
+      <y>36</y>
+      <width>50</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>0</double>
+    </property>
+    <property name="maximum">
+     <double>2.55</double>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="singleStep">
+     <double>0.01</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="cv18Text">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>36</y>
+      <width>50</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+    <property name="minimum">
+     <double>0</double>
+    </property>
+    <property name="maximum">
+     <double>2.55</double>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="singleStep">
+     <double>0.01</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label2">
+    <property name="geometry">
+     <rect>
+      <x>35</x>
+      <y>414</y>
+      <width>50</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label3">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>414</y>
+      <width>50</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>2</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label4">
+    <property name="geometry">
+     <rect>
+      <x>185</x>
+      <y>414</y>
+      <width>50</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>3</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label5">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>414</y>
+      <width>50</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>4</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label6">
+    <property name="geometry">
+     <rect>
+      <x>335</x>
+      <y>414</y>
+      <width>50</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>5</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label7">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>414</y>
+      <width>50</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>6</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label8">
+    <property name="geometry">
+     <rect>
+      <x>485</x>
+      <y>414</y>
+      <width>50</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>7</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label9">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>414</y>
+      <width>50</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>8</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label10">
+    <property name="geometry">
+     <rect>
+      <x>76</x>
+      <y>11</y>
+      <width>496</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Per individual sensor track (if zero, the value for "ALL" at the right will be used)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QDoubleSpinBox" name="cv34Text">
+   <property name="geometry">
+    <rect>
+     <x>726</x>
+     <y>68</y>
+     <width>50</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="decimals">
+    <number>1</number>
+   </property>
+   <property name="minimum">
+    <double>0</double>
+   </property>
+   <property name="maximum">
+    <double>25.5</double>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="singleStep">
+    <double>0.1</double>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonGBMDelayTabSet">
+   <property name="geometry">
+    <rect>
+     <x>753</x>
+     <y>508</y>
+     <width>70</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SET</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label11">
+   <property name="geometry">
+    <rect>
+     <x>59</x>
+     <y>4</y>
+     <width>568</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delay in seconds, between sensor track gets free and sending RS-bus OFF signal </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+   </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonGBMDelayTabDefaults">
+   <property name="geometry">
+    <rect>
+     <x>19</x>
+     <y>508</y>
+     <width>104</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>DEFAULTS</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonGBMDelayTabGet">
+   <property name="geometry">
+    <rect>
+     <x>669</x>
+     <y>508</y>
+     <width>70</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GET</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="cv34Slider">
+   <property name="geometry">
+    <rect>
+     <x>739</x>
+     <y>105</y>
+     <width>24</width>
+     <height>330</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <property name="minimum">
+    <number>0</number>
+   </property>
+   <property name="maximum">
+    <number>255</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label12">
+   <property name="geometry">
+    <rect>
+     <x>733</x>
+     <y>450</y>
+     <width>37</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ALL</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <resources />
+ <connections />
+</ui>

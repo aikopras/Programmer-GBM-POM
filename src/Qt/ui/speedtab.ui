@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui version="4.0">
+ <class>SpeedTab</class>
+ <widget class="QWidget" name="SpeedTab">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>825</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <widget class="QPushButton" name="buttonSpeedTabDefaults">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>508</y>
+     <width>104</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>DEFAULTS</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonSpeedTabGet">
+   <property name="geometry">
+    <rect>
+     <x>665</x>
+     <y>508</y>
+     <width>65</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GET</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonSpeedTabSet">
+   <property name="geometry">
+    <rect>
+     <x>751</x>
+     <y>508</y>
+     <width>63</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SET</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox1">
+   <property name="geometry">
+    <rect>
+     <x>309</x>
+     <y>187</y>
+     <width>500</width>
+     <height>238</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string>QGroupBox {margin-top: 0px;}</string>
+   </property>
+   <widget class="QLabel" name="label2">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>151</y>
+      <width>454</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Track numbers correspond to the bits of the RS-Bus feedback message</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label3">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>171</y>
+      <width>378</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Track numbers are in the range 2..7 (0 = no measurement)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label4">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>191</y>
+      <width>436</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>The length of a track should be specified in mm (range: 100 .. 5000)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label5">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>20</y>
+      <width>468</width>
+      <height>214</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>If a LCD display is connected to a feedback decoder, the decoder can display the speed of the train currently driving through a dedicated track. Two tracks can be monitored per feedback decoder. If such track gets occupied, the decoder starts a timer, which is stopped as soon as one of the adjacent tracks gets occupied. Since the length of the track is known, the speed can be calculated. The speed is expressed in Km/h (and thus compensated for the fact that trains are in H0 scale).</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="CenteredComboBox" name="comboSpeedFeedback1">
+   <property name="geometry">
+    <rect>
+     <x>222</x>
+     <y>191</y>
+     <width>64</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>4</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>5</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>6</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="CenteredComboBox" name="comboSpeedFeedback2">
+   <property name="geometry">
+    <rect>
+     <x>222</x>
+     <y>349</y>
+     <width>64</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>4</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>5</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>6</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QSpinBox" name="speedLengthTrack1">
+   <property name="geometry">
+    <rect>
+     <x>222</x>
+     <y>233</y>
+     <width>61</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="minimum">
+    <number>0</number>
+   </property>
+   <property name="maximum">
+    <number>5000</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="speedLengthTrack2">
+   <property name="geometry">
+    <rect>
+     <x>222</x>
+     <y>391</y>
+     <width>61</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="minimum">
+    <number>0</number>
+   </property>
+   <property name="maximum">
+    <number>5000</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label6">
+   <property name="geometry">
+    <rect>
+     <x>38</x>
+     <y>196</y>
+     <width>179</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Feedback signal for Track 1</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label7">
+   <property name="geometry">
+    <rect>
+     <x>38</x>
+     <y>354</y>
+     <width>179</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Feedback signal for Track 2</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label8">
+   <property name="geometry">
+    <rect>
+     <x>101</x>
+     <y>235</y>
+     <width>116</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Length of Track 1</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label9">
+   <property name="geometry">
+    <rect>
+     <x>101</x>
+     <y>394</y>
+     <width>116</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Length of Track 2</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CenteredComboBox</class>
+   <extends>QComboBox</extends>
+   <header>CenteredComboBox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources />
+ <connections />
+</ui>
